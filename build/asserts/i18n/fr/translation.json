@@ -1,0 +1,12 @@
+{
+  "database": "Base de données",
+  "number": "Nombre",
+  "identification": "Identifiant unique",
+  "name": "Nom",
+  "address": "Adresse",
+  "phone": "Numéro de téléphone",
+  "mistake": "Erreur",
+  "seed": "Page",
+  "random": "aléatoire",
+  "pageNumber": "Numéro de page"
+}
