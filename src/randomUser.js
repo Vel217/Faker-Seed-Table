@@ -1,29 +1,46 @@
 import { faker } from "@faker-js/faker";
 
-function removeSymbol({ value, seed }) {
-  faker.seed(seed);
+function removeSymbol({ value, seed, index }) {
+  const newSeed = seed + index;
+  faker.seed(newSeed);
   const arrayOfIndex = Array.from({ length: value.length }, (_, idx) => idx);
   const indexForRemove = faker.helpers.arrayElement(arrayOfIndex);
-  return (
-    value.substring(0, indexForRemove) + value.substring(indexForRemove + 1)
-  );
+  const newValue =
+    value.substring(0, indexForRemove) + value.substring(indexForRemove + 1);
+
+  if (newValue.length < 10) {
+    return newValue + faker.random.alphaNumeric();
+  } else if (newValue.length > 50) {
+    return newValue.substring(0, 50);
+  } else {
+    return newValue;
+  }
 }
 
-function addSymbol({ value, locale, seed }) {
-  faker.seed(seed);
+function addSymbol({ value, locale, seed, index }) {
+  const newSeed = seed + index;
+  faker.seed(newSeed);
   faker.locale = locale;
   const randomSymbol = faker.random.alphaNumeric();
   const arrayOfIndex = Array.from({ length: value.length }, (_, idx) => idx);
   const indexForAddSymbol = faker.helpers.arrayElement(arrayOfIndex);
-  return (
+  const newValue =
     value.substring(0, indexForAddSymbol) +
     randomSymbol +
-    value.substring(indexForAddSymbol)
-  );
+    value.substring(indexForAddSymbol);
+
+  if (newValue.length < 10) {
+    return newValue + faker.random.alphaNumeric();
+  } else if (newValue.length > 50) {
+    return newValue.substring(0, 50);
+  } else {
+    return newValue;
+  }
 }
 
-function replaceSymbol({ value, seed }) {
-  faker.seed(seed);
+function replaceSymbol({ value, seed, index }) {
+  const newSeed = seed + index;
+  faker.seed(newSeed);
   const arrayOfIndex = Array.from({ length: value.length }, (_, idx) => idx);
   const indexForReplace = faker.helpers.arrayElements(arrayOfIndex, 2);
   const firstIndexForReplace = indexForReplace[0];
@@ -31,16 +48,22 @@ function replaceSymbol({ value, seed }) {
   const firstSymbol = value[firstIndexForReplace];
   const secondSymbol = value[secondIndexForReplace];
 
-  let result =
+  let newValue =
     value.substring(0, firstIndexForReplace) +
     secondSymbol +
     value.substring(firstIndexForReplace + 1);
-  result =
-    result.substring(0, secondIndexForReplace) +
+  newValue =
+    newValue.substring(0, secondIndexForReplace) +
     firstSymbol +
-    result.substring(secondIndexForReplace + 1);
+    newValue.substring(secondIndexForReplace + 1);
 
-  return result;
+  if (newValue.length < 10) {
+    return newValue + faker.random.alphaNumeric();
+  } else if (newValue.length > 50) {
+    return newValue.substring(0, 50);
+  } else {
+    return newValue;
+  }
 }
 
 function getCountOfErrors({ errorProbability, seed }) {
@@ -97,6 +120,7 @@ function createUser({ seed, locale = "en", errorProbability, ordinalNumber }) {
         value: newUser[fieldForError],
         locale,
         seed: seedForErrorFunc,
+        index: i,
       });
     }
   }

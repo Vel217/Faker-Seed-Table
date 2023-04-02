@@ -88,7 +88,7 @@ function App() {
                 htmlFor="customRange3"
                 className="mb-2 inline-block text-black-700 dark:text-black-200"
               >
-                Range of mistake (0 - 1000, step=0,5)
+                {t("rangeOfMistake")}
               </label>
               <input
                 type="range"

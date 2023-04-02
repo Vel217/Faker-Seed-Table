@@ -8,5 +8,6 @@
   "mistake": "Błąd",
   "seed": "Nasionko",
   "random": "Losowy",
-  "pageNumber": "Numer strony"
+  "pageNumber": "Numer strony",
+  "rangeOfMistake": "Zakres błędu (0 - 1000, krok=0,5)"
 }

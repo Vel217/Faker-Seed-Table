@@ -8,5 +8,6 @@
   "mistake": "Erreur",
   "seed": "Page",
   "random": "aléatoire",
-  "pageNumber": "Numéro de page"
+  "pageNumber": "Numéro de page",
+  "rangeOfMistake": "Plage d'erreur (0 - 1000, pas=0,5)"
 }

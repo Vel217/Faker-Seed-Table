@@ -8,5 +8,6 @@
   "mistake": "Mistake",
   "seed": "Seed",
   "random": "Random",
-  "pageNumber": "Page number"
+  "pageNumber": "Page number",
+  "rangeOfMistake": "Range of mistake (0 - 1000, step=0,5)"
 }
